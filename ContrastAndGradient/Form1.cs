@@ -12,6 +12,10 @@ namespace ContrastAndGradient
 {
     public partial class Form1 : Form
     {
+        Bitmap inputImage;
+        Contrast contrast = new Contrast();
+        Sobel sobel = new Sobel();
+
         public Form1()
         {
             InitializeComponent();
@@ -25,9 +29,8 @@ namespace ContrastAndGradient
             {
                 try
                 {
-                    Bitmap image = new Bitmap(file.FileName);
-                    pictureBox1.Image = image;
-
+                    inputImage = new Bitmap(file.FileName);
+                    pictureBox1.Image = inputImage;
                 }
                 catch
                 {
@@ -40,28 +43,28 @@ namespace ContrastAndGradient
         {
             trackBarContrast.Visible = true;
             buttonSobel.Visible = false;
-            pictureBox2.Image = null;
+            label1.Visible = true;
+            pictureBox2.Image = inputImage;
         }
 
         private void GradientToolStripMenuItem_Click(object sender, EventArgs e)
         {
             trackBarContrast.Visible = false;
             buttonSobel.Visible = true;
-            pictureBox2.Image = null;
+            label1.Visible = false;
+            pictureBox2.Image = inputImage;
         }
 
-        private void ButtonSobel_Click(object sender, EventArgs e)
+        private async void ButtonSobel_Click(object sender, EventArgs e)
         {
-            Sobel image = new Sobel();
-            image.SobelConvert(pictureBox1, pictureBox2);
+            await Task.Run(() => sobel.SobelConvert(inputImage, inputImage.Width, inputImage.Height, pictureBox2));
         }
 
-        private void TrackBarContrast_Scroll(object sender, EventArgs e)
+        private async void TrackBarContrast_MouseUp(object sender, MouseEventArgs e)
         {
-            //CallContrast();
-            Contrast image = new Contrast();
-            image.ContrastImage(pictureBox1, pictureBox2, trackBarContrast.Value, trackBarContrast.Maximum);
+            int poz = trackBarContrast.Value;
+            int lenght = trackBarContrast.Maximum;
+            await Task.Run(() => contrast.ContrastImage(inputImage, pictureBox2, poz, lenght));
         }
-
     }
 }

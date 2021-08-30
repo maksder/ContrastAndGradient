@@ -8,3 +8,13 @@ D:\Programming\ContrastAndGradient\ContrastAndGradient\bin\Debug\ContrastAndGrad
 D:\Programming\ContrastAndGradient\ContrastAndGradient\obj\Debug\ContrastAndGradient.exe
 D:\Programming\ContrastAndGradient\ContrastAndGradient\obj\Debug\ContrastAndGradient.pdb
 D:\Programming\ContrastAndGradient\ContrastAndGradient\obj\Debug\ContrastAndGradient.csprojAssemblyReference.cache
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\bin\Debug\ContrastAndGradient.exe.config
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\bin\Debug\ContrastAndGradient.exe
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\bin\Debug\ContrastAndGradient.pdb
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\obj\Debug\ContrastAndGradient.csprojAssemblyReference.cache
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\obj\Debug\ContrastAndGradient.Form1.resources
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\obj\Debug\ContrastAndGradient.Properties.Resources.resources
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\obj\Debug\ContrastAndGradient.csproj.GenerateResource.cache
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\obj\Debug\ContrastAndGradient.csproj.CoreCompileInputs.cache
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\obj\Debug\ContrastAndGradient.exe
+D:\Programming\ContrastAndGradient-main\ContrastAndGradient\obj\Debug\ContrastAndGradient.pdb

@@ -10,19 +10,20 @@ namespace ContrastAndGradient
 {
     class Sobel
     {
-        public void SobelConvert(PictureBox pictureBox1, PictureBox pictureBox2)
+        public void SobelConvert(Bitmap inputImage, int width, int height, PictureBox pictureBox2)
         {
-            Bitmap inputImage = new Bitmap(pictureBox1.Image);
             Bitmap outputImage = new Bitmap(inputImage.Width, inputImage.Height);
-            int width = inputImage.Width;
-            int height = inputImage.Height;
+
+            width = inputImage.Width;
+            height = inputImage.Height;
+
             int[,] gx = new int[,] { { -1, 0, 1 }, { -2, 0, 2 }, { -1, 0, 1 } };
             int[,] gy = new int[,] { { 1, 2, 1 }, { 0, 0, 0 }, { -1, -2, -1 } };
 
             int[,] allPixR = new int[width, height];
             int[,] allPixG = new int[width, height];
-            int[,] allPixB = new int[width, height];
-        
+            int[,] allPixB = new int[width, height];       
+
             for (int i = 0; i < width; i++)
             {
                 for (int j = 0; j < height; j++)
@@ -38,11 +39,11 @@ namespace ContrastAndGradient
             int new_bx = 0, new_by = 0;
             int rc, gc, bc;
             double rG, gG, bG;
+
             for (int i = 1; i < inputImage.Width - 1; i++)
             {
                 for (int j = 1; j < inputImage.Height - 1; j++)
                 {
-
                     new_rx = 0;
                     new_ry = 0;
                     new_gx = 0;
@@ -68,7 +69,6 @@ namespace ContrastAndGradient
                                 new_ry += gy[wi + 1, hw + 1] * rc;
                             }
 
-
                             gc = allPixG[i + hw, j + wi];
                             if (hw == 0)
                             {
@@ -81,7 +81,6 @@ namespace ContrastAndGradient
                                 new_gy += gy[wi + 1, hw + 1] * gc;
                             }
 
-
                             bc = allPixB[i + hw, j + wi];
                             if (hw == 0)
                             {
@@ -93,7 +92,6 @@ namespace ContrastAndGradient
                                 new_bx += gx[wi + 1, hw + 1] * bc;
                                 new_by += gy[wi + 1, hw + 1] * bc;
                             }
-
                         }
                     }
 
@@ -111,7 +109,11 @@ namespace ContrastAndGradient
                     outputImage.SetPixel(i, j, Color.FromArgb(((int)rG), ((int)gG), ((int)bG)));
                 }
             }
-            pictureBox2.Image = outputImage;
+
+            pictureBox2.BeginInvoke(new Action(() =>
+            {
+                pictureBox2.Image = outputImage;
+            }));
         }
 
     }
